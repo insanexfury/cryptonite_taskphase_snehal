@@ -61,9 +61,42 @@ hacker@commands~hidden-files:/$ ls -a
 .   .dockerenv             bin   challenge  etc   lib    lib64   media  nix  proc  run   srv  tmp  var
 ..  .flag-140412502531835  boot  dev        home  lib32  libx32  mnt    opt  root  sbin  sys  usr
 hacker@commands~hidden-files:/$ cat .flag-140412502531835
-pwn.college{4cCWvLiy2nn6Imw5IxqwZWDaujq.dBTN4QDL2kjN0czW}
 ~~~
-# An eepic filesystem Quest
+# An epic filesystem Quest
+In this question I had problem in reading the file but without cd'ing into the directory.  
+but after some attempts I figured what to do.
+~~~bash
+CONGRATULATIONS! Your perserverence has paid off, and you have found the flag!
+It is: pwn.college{oplwIxhh_rnoXHT9DlJ3oaFpBjP.dljM4QDL2kjN0czW}
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/cycler-0.10.0.egg-info$
+~~~
+# Making directories
+mkdir is the command used for making new directories. In this challenge I had to  create a /tmp/pwn directory and make a college file in it and then run /challenge/run.
+~~~bash
+hacker@commands~making-directories:~$ mkdir /tmp/pwn
+hacker@commands~making-directories:~$ cd /tmp/pwn
+hacker@commands~making-directories:/tmp/pwn$ touch college
+hacker@commands~making-directories:/tmp/pwn$ /challenge/run
+Success! Here is your flag:
+pwn.college{AkgkKJOMFoxQaoS-L82dV7XWLWU.dFzM4QDL2kjN0czW}
+~~~
+# Finding files
+In this challenge I had to search for for the correct /path/to/flag using the find and cat command.
+ ~~~bash
+hacker@commands~finding-files:~$ cat /usr/share/racket/pkgs/plot-lib/plot/flag
+pwn.college{c87NNUb4oc6BLGLbwr93d1LXpzH.dJzM4QDL2kjN0czW}
+~~~
+# Linking Files
+ In this level the flag is, as always, in /flag, but /challenge/catflag will instead read out /home/hacker/not-the-flag.I had to use the symlink to fool it into giving the flag.
+~~~
+hacker@commands~linking-files:~$ ln -sf /flag /home/hacker/not-the-flag
+hacker@commands~linking-files:~$ /challenge/catflag
+About to read out the /home/hacker/not-the-flag file!
+pwn.college{gwzx5QgybXfgVYEX0sp7JuS8pM9.dlTM1UDL2kjN0czW}
+~~~
+
+
+
 
 
 
