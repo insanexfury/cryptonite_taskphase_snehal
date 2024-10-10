@@ -1,5 +1,5 @@
 # Redirecting Output
- This character is used to redirect stdout to files.
+ This > character is used to redirect stdout to files.
  ~~~
  hacker@piping~redirecting-output:~$ echo PWN > COLLEGE
 Correct! You successfully redirected 'PWN' to the file 'COLLEGE'! Here is your
