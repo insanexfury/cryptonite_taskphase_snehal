@@ -35,6 +35,36 @@ hacker@globbing~matching-with-:/challenge/files$ /challenge/run file_[absh]
 You got it! Here is your flag!
 pwn.college{AY0zbmO9SklfV_j_qJqyL_rgwS_.dNjM4QDL2kjN0czW}
 ~~~
+# Matching paths with []
+In this challenge we had to run /challenge/run with a single argument that bracket globs into into the absolute paths to the file_b, file_a, file_s, and file_h files.
+~~~
+hacker@globbing~matching-paths-with-:~$ /challenge/run /challenge/files/file_[absh]
+You got it! Here is your flag!
+pwn.college{Md-3HvcU2AQUcqCg-QW9eB5A4lZ.dRjM4QDL2kjN0czW}
+~~~
+# Mixing Globs
+In this challenge we had to USE two of the previous globs simulataneusly.
+~~~
+hacker@globbing~mixing-globs:~$ cd /challenge/files
+hacker@globbing~mixing-globs:/challenge/files$ ls
+amazing      delightful   great       jovial    magical     pwning   splendid   victorious  youthful
+beautiful    educational  happy       kind      nice        queenly  thrilling  wonderful   zesty
+challenging  fantastic    incredible  laughing  optimistic  radiant  uplifting  xenial
+hacker@globbing~mixing-globs:/challenge/files$ /challenge/run [cep]*
+You got it! Here is your flag!
+pwn.college{wp5Ph1R1K-EtiUrXrrqYl7fI8Pc.dVjM4QDL2kjN0czW}
+~~~
+# Exclusionary Globs
+In this challenge I had to select all the files except the ones that start with p,w,n.  
+To do the above mentioned task we had to use ! a newer version of bash.
+~~~
+hacker@globbing~exclusionary-globbing:~$ cd /challenge/files
+hacker@globbing~exclusionary-globbing:/challenge/files$ /challenge/run [!pwn]*
+You got it! Here is your flag!
+pwn.college{4zxFlRzCRl_v7IJRJldjVIkv5fx.dZjM4QDL2kjN0czW}
+~~~
+
+
 
 
 
