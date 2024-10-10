@@ -62,6 +62,40 @@ hacker@piping~redirecting-errors:~$ cat myflag
 [FLAG] pwn.college{IjJnhGKZKuVvd229Fk_6u-Wfqjy.ddjN1QDL2kjN0czW}
 ~~~
 # Redirecting Input
-
-
+In this challenge I learned that we can not only redirect ouputs from commands using > but also redirect input in them using <.
+~~~
+hacker@piping~redirecting-input:~$ echo COLLEGE > pwn
+hacker@piping~redirecting-input:~$ /challenge/run
+You have not redirected anything to my standard input. Please do so, using '<'.
+hacker@piping~redirecting-input:~$ /challenge/run < PWN
+Reading from standard input...
+Correct! You have redirected the PWN file into my standard input, and I read
+the value 'COLLEGE' out of it!
+Here is your flag:
+pwn.college{Y9GZVcvqsZKdFRSvd23AfVh7ecp.dBzN1QDL2kjN0czW}
+~~~
+# Grepping Stored Values
+In this challenge first I needed to redirect the output of /challenge/run command to /tmp/data.txt file then grep the file with argument pwn(pwn because the flag alway starts with pwn) to find the flag.
+~~~
+hacker@piping~grepping-stored-results:~$ /challenge/run > /tmp/data.txt
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge will check that output is redirected to a specific file path : /tmp/data.txt
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+[HYPE] ONWARDS TO GREATNESS!
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+[TEST] You should have redirected my stdout to a file called /tmp/data.txt. Checking...
+[HINT] File descriptors are inherited from the parent, unless the FD_CLOEXEC is set by the parent on the file descriptor.
+[HINT] For security reasons, some programs, such as python, do this by default in certain cases. Be careful if you are
+[HINT] creating and trying to pass in FDs in python.
+[PASS] The file at the other end of my stdout looks okay!
+[PASS] Success! You have satisfied all execution requirements.
+hacker@piping~grepping-stored-results:~$ grep pwn /tmp/data.txt
+pwns
+pwn
+pwning
+pwned
+pwn.college{YfCXwwuXgw7g06RFUbDSaDDG8LY.dhTM4QDL2kjN0czW}
+~~~
+# Grepping Live Outputs
 
