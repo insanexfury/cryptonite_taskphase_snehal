@@ -38,7 +38,30 @@ This level we learned a new command to print out evey exported variable in the s
 hacker@variables~printing-exported-variables:~$ env $FLAG
 env: ‘pwn.college{ML8QRyJzRCvCkTOBwgDWff-fJuH.dhTN1QDL2kjN0czW}’
 ~~~
-
+# Storing Command Outputs
+Yoy can also store the output of commands in a variable easily.
+~~~
+hacker@variables~storing-command-output:~$ PWN=$(/challenge/run)
+Congratulations! You have read the flag into the PWN variable. Now print it out
+and submit it!
+hacker@variables~storing-command-output:~$ echo $PWN
+pwn.college{wFpRnxg1-KloQnb0xIYlaYCh9jY.dVzN0UDL2kjN0czW}
+~~~
+# Reading Input
+We can also read inputs to variable using `read` command.
+~~~
+hacker@variables~reading-input:~$ read PWN
+COLLEGE
+You've set the PWN variable properly! As promised, here is the flag:
+pwn.college{00oZBL27e90DH-A6sRbE0U7NqIk.dhzN1QDL2kjN0czW}
+~~~
+# Reading Files
+we can use read command to store output of commands or files in variables.
+~~~
+hacker@variables~reading-files:~$ read PWN < /challenge/read_me
+You've set the PWN variable properly! As promised, here is the flag:
+pwn.college{g0q_SCHlVkIytWuMnedPuE4KHDx.dBjM4QDL2kjN0czW}
+~~~
 
 
 
