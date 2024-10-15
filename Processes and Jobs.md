@@ -72,5 +72,102 @@ hacker@processes~resuming-processes:~$ fg
 I'm back! Here's your flag:
 pwn.college{gaEZB5YEbbnHisewnf0LKk4rluh.dZDN4QDL2kjN0czW}
 ~~~
+# Background Processes
+~~~
+hacker@processes~backgrounding-processes:~$ /challenge/run
+I'll only give you the flag if there's already another copy of me running *and
+not suspended* in this terminal... Let's check!
+UID          PID STAT CMD
+root          82 S+   bash /challenge/run
+root          84 R+   ps -o user=UID,pid,stat,cmd
+I don't see a second me!
+To pass this level, you need to suspend me, resume the suspended process in the
+background, and then launch a new version of me! You can background me with
+Ctrl-Z (and resume me in the background with 'bg') or, if you're not ready to
+do that for whatever reason, just hit Enter and I'll exit!
+^Z
+[1]+  Stopped                 /challenge/run
+hacker@processes~backgrounding-processes:~$ bg
+[1]+ /challenge/run &
+Yay, I'm now running the background! Because of that, this text will probably
+overlap weirdly with the shell prompt. Don't panic; just hit Enter a few times
+to scroll this text out.
+hacker@processes~backgrounding-processes:~$ /challenge/run
+I'll only give you the flag if there's already another copy of me running *and
+not suspended* in this terminal... Let's check!
+UID          PID STAT CMD
+root          82 S    bash /challenge/run
+root          92 S    sleep 6h
+root          93 S+   bash /challenge/run
+root          95 R+   ps -o user=UID,pid,stat,cmd
+Yay, I found another version of me running in the background! Here is the flag:
+pwn.college{MwmErYAYB9EJxShmj9zYsvpXuf7.ddDN4QDL2kjN0czW}
+~~~
+# Foregrounding Processes 
+~~~
+hacker@processes~foregrounding-processes:~$ /challenge/run
+To pass this level, you need to suspend me, resume the suspended process in the
+background, and *then* foreground it without re-suspending it! You can
+background me with Ctrl-Z (and resume me in the background with 'bg') or, if
+you're not ready to do that for whatever reason, just hit Enter and I'll exit!
+^Z
+[1]+  Stopped                 /challenge/run
+hacker@processes~foregrounding-processes:~$ bg
+[1]+ /challenge/run &
+Yay, I'm now running the background! Because of that, this text will probably
+overlap weirdly with the shell prompt. Don't panic; just hit Enter a few times
+to scroll this text out. After that, resume me into the foreground with 'fg';
+I'll wait.
+hacker@processes~foregrounding-processes:~$ fg
+/challenge/run
+YES! Great job! I'm now running in the foreground. Hit Enter for your flag!
+pwn.college{kYuXTh68ekyJUGLKMmj2uoLN-it.dhDN4QDL2kjN0czW}
+~~~
+# Starting Background Processes
+
+~~~
+hacker@processes~starting-backgrounded-processes:~$ fg
+sleep 84
+hacker@processes~starting-backgrounded-processes:~$ /challenge/run &
+[2] 99
+Yay, you started me in the background! Because of that, this text will probably
+overlap weirdly with the shell prompt, but you're used to that by now...
+Anyways! Here is your flag!
+pwn.college{8kb2aHxmjtuon1CpATl-Pycv1qo.dlDN4QDL2kjN0czW}
+~~~
+# Process Exit Codes
+A typical command that succeeds returns value 0 but the command that fails typically returns any value except 0.  
+~~~
+hacker@processes~process-exit-codes:~$ /challenge/get-code
+Exiting with an error code!
+hacker@processes~process-exit-codes:~$ $?
+ssh-entrypoint: 248: command not found
+hacker@processes~process-exit-codes:~$ /challenge/submit-code 248
+CORRECT! Here is your flag:
+pwn.college{QMf3HUIzx7jb8Vj-ND4DZu_L3Mr.dljN4UDL2kjN0czW}
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
